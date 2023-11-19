@@ -142,6 +142,9 @@ public class    PartieEchecs {
         for (int i = 0; i < echiquier.length; i++) {
             for (int j = 0; j < echiquier[i].length; j++) {
                 if (echiquier[i][j] != null) {
+                    if(echiquier[i][j] instanceof Pawn && (i == 0 || i == 7)){
+                        echiquier[i][j] = new Queen(echiquier[i][j].getCouleur());
+                    }
                     if (echiquier[i][j] instanceof King && echiquier[i][j].getCouleur() == 'b') {
                         roiPosb = new Position(EchecsUtil.getColonne((byte) j), EchecsUtil.getLigne((byte) i));
                     } else if (echiquier[i][j] instanceof King && echiquier[i][j].getCouleur() == 'n') {
