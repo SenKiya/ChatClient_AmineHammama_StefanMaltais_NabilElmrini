@@ -1,5 +1,7 @@
 package com.chat.client;
 
+import echecs.EtatPartieEchecs;
+
 /**
  * Cette classe étend la classe Client pour lui ajouter des fonctionnalités
  * spécifiques au chat et au jeu d'échecs en réseau.
@@ -10,4 +12,17 @@ package com.chat.client;
  */
 public class ClientChat extends Client {
     //Cette classe est pour le moment vide et sera compléter dans le TP.
+    EtatPartieEchecs etat;
+
+    public EtatPartieEchecs getEtat() {
+        return etat;
+    }
+
+    public void setEtat(EtatPartieEchecs etat) {
+        this.etat = etat;
+    }
+
+    public void nouvellePartie(){
+        etat = new EtatPartieEchecs();
+    }
 }
