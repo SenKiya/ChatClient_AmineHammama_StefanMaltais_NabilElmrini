@@ -3,6 +3,7 @@ package com.echecs;
 import com.echecs.pieces.*;
 import com.echecs.util.EchecsUtil;
 
+import java.util.ListIterator;
 import java.util.Vector;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -29,13 +30,18 @@ public class    PartieEchecs {
      * La couleur de celui à qui c'est le tour de jouer (n ou b).
      */
     private char tour = 'b'; //Les blancs commencent toujours
+    private Vector<Position> positions;
+    private ListIterator<Position> iterateur;
 
+    private EtatPartieEchecs etat;
     /**
      * Crée un échiquier de jeu d'échecs avec les pièces dans leurs positions
      * initiales de début de partie.
      * Répartit au hasard les couleurs n et b entre les 2 joueurs.
      */
     public PartieEchecs() {
+        positions =new Vector<Position>();
+        iterateur = positions.listIterator();
         echiquier = new Piece[8][8];
         //Placement des pièces :
         echiquier[0][0] = new Rook('n');
@@ -137,7 +143,7 @@ public class    PartieEchecs {
         Position piecePos;
         char roicouleur;
         char result = 'x';
-        Vector<Position> positions = new Vector<Position>();
+
         boolean b = false;
         boolean n = false;
         Piece p;
@@ -159,7 +165,7 @@ public class    PartieEchecs {
             }
         }
 
-        var iterateur = positions.listIterator();
+
         while (iterateur.hasNext()) {
             Position temp = iterateur.next();
             p = echiquier[temp.getLigne()][temp.getColonne()];
@@ -197,9 +203,46 @@ public class    PartieEchecs {
         if(deplace(pos1,pos2)){
             echiquier[EchecsUtil.indiceLigne(pos2)][EchecsUtil.indiceColonne(pos2)]=echiquier[EchecsUtil.indiceLigne(pos1)][EchecsUtil.indiceColonne(pos1)];
             echiquier[EchecsUtil.indiceLigne(pos1)][EchecsUtil.indiceColonne(pos1)] =null;
+            checkmate(estEnEchec());
+            changerTour();
+            etat.setEtatEchiquier(updateBoard());
             return true;
         }
         return false;
+    }
+    public boolean checkmate(char echec){
+        char res=echec;
+        Position roiEchec;
+        if(res!='x'){
+            while (iterateur.hasPrevious()){
+                Position temp=iterateur.previous();
+                if (echiquier[temp.getLigne()][temp.getColonne()].getCouleur()==res){
+                    for(int i=0;i<8;i++){
+                        for(int j=0;j<8;j++){
+                            Piece b=echiquier[i][j];
+                            Position ite = new Position((char)('a'+j), (byte)(8-i));
+                            if(deplace(temp,ite)) {
+                                echiquier[i][j] = echiquier[EchecsUtil.indiceLigne(temp)][EchecsUtil.indiceColonne(temp)];
+                                echiquier[EchecsUtil.indiceLigne(temp)][EchecsUtil.indiceColonne(temp)] = null;
+                                if (estEnEchec() != res) {
+                                    echiquier[EchecsUtil.indiceLigne(temp)][EchecsUtil.indiceColonne(temp)] = echiquier[i][j];
+                                    echiquier[i][j] = b;
+                                    positions.clear();
+                                    return false;
+                                }else {
+                                    echiquier[EchecsUtil.indiceLigne(temp)][EchecsUtil.indiceColonne(temp)] = echiquier[i][j];
+                                    echiquier[i][j] = b;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        positions.clear();
+        return true;
     }
 
     private char[][] updateBoard(){
