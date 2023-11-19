@@ -17,7 +17,7 @@ public class Pawn extends Piece {
         byte colonne2 = EchecsUtil.indiceColonne(pos2);
 
         PartieEchecs partieEchecs = new PartieEchecs();
-        if(partieEchecs.deplace(pos1,pos2)){
+
             if(pos1.estSurLaMemeDiagonaleQue(pos2)){
                 if(ligne1<ligne2 && colonne1<colonne2){
                     for(int i = colonne1; i<colonne2;i++){
@@ -59,7 +59,7 @@ public class Pawn extends Piece {
 
                 }
             }
-        }
+
 
 
 
