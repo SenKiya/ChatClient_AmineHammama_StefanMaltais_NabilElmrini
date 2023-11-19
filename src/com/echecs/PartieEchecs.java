@@ -1,4 +1,4 @@
-package echecs;
+package com.echecs;
 
 import com.echecs.pieces.*;
 import com.echecs.util.EchecsUtil;

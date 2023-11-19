@@ -1,4 +1,4 @@
-package echecs;
+package com.echecs;
 
 import com.echecs.util.EchecsUtil;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;

@@ -1,4 +1,4 @@
-package echecs;
+package com.echecs;
 
 public class EtatPartieEchecs {
     public char[][] etatEchiquier;

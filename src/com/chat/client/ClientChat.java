@@ -1,6 +1,6 @@
 package com.chat.client;
 
-import echecs.EtatPartieEchecs;
+import com.echecs.EtatPartieEchecs;
 
 /**
  * Cette classe étend la classe Client pour lui ajouter des fonctionnalités
