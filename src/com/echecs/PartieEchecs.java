@@ -48,8 +48,8 @@ public class    PartieEchecs {
         echiquier[0][0] = new Rook('n');
         echiquier[0][1] = new Horse('n');
         echiquier[0][2] = new Bishop('n');
-        echiquier[0][3] = new King('n');
-        echiquier[0][4] = new Queen('n');
+        echiquier[0][3] = new Queen('n');
+        echiquier[0][4] = new King('n');
         echiquier[0][5] = new Bishop('n');
         echiquier[0][6] = new Horse('n');
         echiquier[0][7] = new Rook('n');
@@ -61,8 +61,8 @@ public class    PartieEchecs {
         echiquier[7][0] = new Rook('b');
         echiquier[7][1] = new Horse('b');
         echiquier[7][2] = new Bishop('b');
-        echiquier[7][3] = new King('b');
-        echiquier[7][4] = new Queen('b');
+        echiquier[7][3] = new Queen('b');
+        echiquier[7][4] = new King('b');
         echiquier[7][5] = new Bishop('b');
         echiquier[7][6] = new Horse('b');
         echiquier[7][7] = new Rook('b');
@@ -218,6 +218,7 @@ public class    PartieEchecs {
         char res=echec;
         Position roiEchec;
         iterateur = positions.iterator();
+        boolean there = false;
         if(res!='x'){
             while (iterateur.hasNext()){
                 Position temp=iterateur.next();
@@ -232,8 +233,7 @@ public class    PartieEchecs {
                                 if (estEnEchec() != res) {
                                     echiquier[EchecsUtil.indiceLigne(temp)][EchecsUtil.indiceColonne(temp)] = echiquier[i][j];
                                     echiquier[i][j] = b;
-                                    positions.clear();
-                                    return false;
+                                    there = false;
                                 }else {
                                     echiquier[EchecsUtil.indiceLigne(temp)][EchecsUtil.indiceColonne(temp)] = echiquier[i][j];
                                     echiquier[i][j] = b;
@@ -247,7 +247,7 @@ public class    PartieEchecs {
 
 
         positions.clear();
-        return true;
+        return there;
     }
 
     private char[][] updateBoard(){
