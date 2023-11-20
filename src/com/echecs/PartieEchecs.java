@@ -3,6 +3,7 @@ package com.echecs;
 import com.echecs.pieces.*;
 import com.echecs.util.EchecsUtil;
 
+import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Vector;
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -31,7 +32,7 @@ public class    PartieEchecs {
      */
     private char tour = 'b'; //Les blancs commencent toujours
     private Vector<Position> positions;
-    private ListIterator<Position> iterateur;
+    private Iterator<Position> iterateur;
 
     private EtatPartieEchecs etat;
     /**
@@ -41,7 +42,7 @@ public class    PartieEchecs {
      */
     public PartieEchecs() {
         positions =new Vector<Position>();
-        iterateur = positions.listIterator();
+        iterateur = positions.iterator();
         echiquier = new Piece[8][8];
         //Placement des pièces :
         echiquier[0][0] = new Rook('n');
@@ -216,9 +217,10 @@ public class    PartieEchecs {
     public boolean checkmate(char echec){
         char res=echec;
         Position roiEchec;
+        iterateur = positions.iterator();
         if(res!='x'){
-            while (iterateur.hasPrevious()){
-                Position temp=iterateur.previous();
+            while (iterateur.hasNext()){
+                Position temp=iterateur.next();
                 if (echiquier[temp.getLigne()][temp.getColonne()].getCouleur()==res){
                     for(int i=0;i<8;i++){
                         for(int j=0;j<8;j++){
