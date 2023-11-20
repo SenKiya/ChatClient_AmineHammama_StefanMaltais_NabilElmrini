@@ -20,7 +20,7 @@ public class Rook extends Piece {
 
 
 
-            if (pos1.estSurLaMemeColonneQue(pos2) == (false) || pos1.estSurLaMemeLigneQue(pos2) == (false)) {
+            if (pos1.estSurLaMemeColonneQue(pos2) == (false) && pos1.estSurLaMemeLigneQue(pos2) == (false)) {
                 return false;
             }
 

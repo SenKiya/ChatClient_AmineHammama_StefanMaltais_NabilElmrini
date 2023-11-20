@@ -118,7 +118,7 @@ public class    PartieEchecs {
                 return false;
             }
         }
-        if(a.peutSeDeplacer(initiale,finale,echiquier)){
+        if(!a.peutSeDeplacer(initiale,finale,echiquier)){
             return false;
         }
         if (deplacerTempVerifEchec(initiale, finale)){
