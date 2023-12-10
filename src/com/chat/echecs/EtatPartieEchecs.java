@@ -98,6 +98,7 @@ public class EtatPartieEchecs extends Observable {
                 s+=((etatEchiquier[i][j]==' ')?".":etatEchiquier[i][j])+" ";
             s+="\n";
         }
+        //s
         s+="  ";
         for (char j='a';j<='h';j++)
             s+=j+" ";
