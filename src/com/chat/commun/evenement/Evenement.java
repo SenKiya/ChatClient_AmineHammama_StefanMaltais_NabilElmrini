@@ -1,7 +1,6 @@
 package com.chat.commun.evenement;
 /**
- * Cette classe représente un événement. Un événement est caractérisé par sa
- * source (objet sur lequel s'est produit l'événement) son type (String) et peut avoir des
+ * Cette classe représente un événement. Un événement est caractérisé par son type (String) et peut avoir des
  * arguments regroupés dans une chaine de caractères (String).
  *
  * @author Abdelmoumène Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)

@@ -1,7 +1,6 @@
 package com.chat.commun.thread;
 /**
- * Cette classe permet de créer des threads capables de lire continuellement
- * sur un objet de type Lecteur.
+ * Cette classe permet de créer des threads capables de lire continuellement sur un un objet de type Lecteur.
  *
  * @author Abdelmoumène Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)
  * @version 1.0
