@@ -18,7 +18,7 @@ import java.net.Socket;
  * @version 1.0
  * @since 2023-09-01
  */
-public class Client extends Observable implements Lecteur {
+public class Client extends Observable implements Lecteur{
 
     private String adrServeur = Config.ADRESSE_SERVEUR;
     private int portServeur = Config.PORT_SERVEUR;
