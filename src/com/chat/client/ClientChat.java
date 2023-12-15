@@ -1,6 +1,6 @@
 package com.chat.client;
 
-import com.echecs.EtatPartieEchecs;
+import com.chat.echecs.EtatPartieEchecs;
 
 /**
  * Cette classe étend la classe Client pour lui ajouter des fonctionnalités
@@ -12,17 +12,22 @@ import com.echecs.EtatPartieEchecs;
  */
 public class ClientChat extends Client {
     //Cette classe est pour le moment vide et sera compléter dans le TP.
-    EtatPartieEchecs etat;
+    private EtatPartieEchecs etatPartieEchecs;
+    private String alias;
 
-    public EtatPartieEchecs getEtat() {
-        return etat;
+    public EtatPartieEchecs getEtatPartieEchecs() {
+        return etatPartieEchecs;
     }
-
-    public void setEtat(EtatPartieEchecs etat) {
-        this.etat = etat;
+    public void nouvellePartie() {
+            this.etatPartieEchecs = new EtatPartieEchecs();
     }
-
-    public void nouvellePartie(){
-        etat = new EtatPartieEchecs();
+    public void setEtatPartieEchecs(EtatPartieEchecs etatPartieEchecs) {
+        this.etatPartieEchecs = etatPartieEchecs;
+    }
+    public String getAlias() {
+        return this.alias;
+    }
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 }
